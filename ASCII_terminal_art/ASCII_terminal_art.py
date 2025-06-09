@@ -1,5 +1,5 @@
 import cv2
-from colors import ANSI_COLORS_RGB
+from .colors import ANSI_COLORS_RGB
 
 class render:
     """
