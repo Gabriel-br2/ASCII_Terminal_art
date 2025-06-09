@@ -5,7 +5,7 @@ setup(
     version="0.0.1",
     packages=find_packages(),
     install_requires=[
-        "numpy>=2.2.6"
+        "numpy>=2.2.6",
         "opencv-python>=4.11.0.86"
     ],
     author="Gabriel Rocha de Souza",
