@@ -94,8 +94,12 @@ class render:
         nearest_code = self.RESET  # valor padrão
 
         for value in ANSI_COLORS_RGB.values():
-            ansi_code, (cr,cg,cb) = value["ansi"], value["rgb"]
+            ansi_code, (cr, cg, cb) = value["ansi"], value["rgb"]
             
+            cr = float(cr)
+            cg = float(cg)
+            cb = float(cb)
+
             dist = (r - cr)**2 + (g - cg)**2 + (b - cb)**2
             if dist < min_dist:
                 min_dist = dist
@@ -168,10 +172,12 @@ class render:
             print(f"An error occurred: {e}")
 
     def debug_msg(self):
-        print(f"\nASCII art generated for '{self.IMAGE_FILE}' with a width of {self.OUTPUT_WIDTH} characters, using '{self.ASCII_CHAR}'.")
-        print(f"ASCII art height: {self.output_height} lines.")
-        print(f"Information list displayed from line {self.LIST_START_LINE + 1} to line {self.list_end_line_dynamic} (indices {self.LIST_START_LINE} to {self.list_end_line_dynamic -1}).")
-
+        try:
+            print(f"\nASCII art generated for '{self.IMAGE_FILE}' with a width of {self.OUTPUT_WIDTH} characters, using '{self.ASCII_CHAR}'.")
+            print(f"ASCII art height: {self.output_height} lines.")
+            print(f"Information list displayed from line {self.LIST_START_LINE + 1} to line {self.list_end_line_dynamic} (indices {self.LIST_START_LINE} to {self.list_end_line_dynamic -1}).")
+        except:
+            print("No image generated")
 
 if __name__ == "__main__":
     info_project_list = [
@@ -190,4 +196,4 @@ if __name__ == "__main__":
     )
 
     converter.convert_image_to_colored_ascii()
-    converter.debug_msg()
+    #converter.debug_msg()
