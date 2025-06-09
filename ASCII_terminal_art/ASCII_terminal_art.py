@@ -85,6 +85,7 @@ class render:
         self.MARGIN_RIGHT_FOR_LIST = margin_right_for_list
         self.LIST_START_LINE = list_start_line
         self.INFO_LIST = info_list if info_list is not None else []
+        self.ascii_output = []
 
     def _find_nearest_ansi_color(self, r, g, b):
         """
@@ -139,7 +140,7 @@ class render:
             # The list goes up to (self.output_height - 5) lines to have a bottom margin
             self.list_end_line_dynamic = self.output_height - 5 
             
-            ascii_output = []
+            self.ascii_output = []
             for r in range(self.output_height):
                 row_chars = []
                 
@@ -160,14 +161,20 @@ class render:
                         info_string = f"{ANSI_COLORS_RGB[info_name_color]['ansi']}{info_name}:{self.RESET} {ANSI_COLORS_RGB[info_value_color]['ansi']}{info_value}{self.RESET}"
                         row_chars.append(info_string)
                 
-                ascii_output.append("".join(row_chars))
-
-            for line in ascii_output:
-                print(line)
-            print(self.RESET) # Reset all colors at the end
+                self.ascii_output.append("".join(row_chars))
 
         except FileNotFoundError:
             print(f"Error: The file '{self.IMAGE_FILE}' was not found. Please check the path: {self.IMAGE_FILE}")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+    def show(self):
+        try:
+            for line in self.ascii_output:
+                print(line)
+            print(self.RESET) 
+                
         except Exception as e:
             print(f"An error occurred: {e}")
 
@@ -181,7 +188,7 @@ class render:
 
 if __name__ == "__main__":
     info_project_list = [
-        ("Project Name", "RED", "Digital Twin", "WHITE"),
+        ("Project Name", "RED", "ASCII_terminal_art", "WHITE"),
         ("Status", "RED", "In Progress", "BLUE"), 
         ("Project ID", "RED", "DT-2025-001", "ORANGE"),
     ]
@@ -189,11 +196,12 @@ if __name__ == "__main__":
     converter = render(
         ascii_char="#",
         output_width=50,
-        image_file="teste.png",
+        image_file="image.png",
         margin_right_for_list=10,
         list_start_line=2,
         info_list=info_project_list
     )
 
     converter.convert_image_to_colored_ascii()
-    #converter.debug_msg()
+    converter.show()
+    # converter.debug_msg()
