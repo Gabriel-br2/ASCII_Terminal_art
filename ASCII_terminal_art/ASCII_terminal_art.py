@@ -1,6 +1,6 @@
 import cv2
 
-class ASCII_terminal_art:
+class render:
     """
     A class to convert images into colored ASCII art with additional information.
     """
