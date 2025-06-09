@@ -28,8 +28,8 @@ The project consists of a single Python file:
     * `ASCII_terminal_art` class:
         * `__init__`: Constructor for initializing class parameters, including the ASCII character, output width, image file path, list positioning, and ANSI color codes.
         * `_get_ansi_color_and_char`: A private helper method that maps RGB pixel values to ANSI foreground color codes and determines if the ASCII character or a space should be used.
-        * `convert_image_to_colored_ascii`: The main method responsible for loading, resizing, processing the image, and printing the colored ASCII art with the embedded information list.
-
+        * `convert_image_to_colored_ascii`: The main method responsible for loading, resizing and processing the image. 
+        * `show`: Method responsible for printing the colored ASCII art with the embedded information list.
 ---
 
 ## Configuration Structure ⚙️
@@ -63,6 +63,10 @@ converter = ASCII_terminal_art(
     list_start_line=2,
     info_list=info_project_list
 )
+
+converter.convert_image_to_colored_ascii()
+converter.show() 
+
 ```
 
 ---
