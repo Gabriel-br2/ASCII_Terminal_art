@@ -1,1 +1,1 @@
-from .ASCII_terminal_art import ASCII_terminal_art
+from .ASCII_terminal_art import render
