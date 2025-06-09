@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="densopy",
-    version="0.0.9",
+    name="ASCII_Terminal_art",
+    version="0.1.0",
     packages=find_packages(),
     install_requires=[
         "numpy>=2.2.6",
