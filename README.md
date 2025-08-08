@@ -5,7 +5,9 @@
 This project provides a Python-based utility to convert images into colored ASCII art, displaying the output directly in the terminal. Beyond simple conversion, it intelligently maps image colors to ANSI escape codes for vibrant terminal output and includes the capability to embed a dynamic information list alongside the generated ASCII art.
 
 ## System Behavior
+
 The `ASCII_terminal_art` class takes an image file and several configuration parameters as input. It resizes the image based on the desired output width, maintaining its aspect ratio. Each pixel in the resized image is then analyzed for its RGB values. Based on the pixel's brightness and color dominance, an appropriate ANSI foreground color and a specified ASCII character (or a blank space for very dark pixels) are selected. The converted colored ASCII characters are then assembled row by row. Crucially, the system also integrates a user-defined information list, displaying it dynamically to the right of the ASCII art, creating a rich, informative visual in the terminal.
+
 ---
 
 ## Code Structure 🏗️
