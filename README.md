@@ -6,18 +6,6 @@ This project provides a Python-based utility to convert images into colored ASCI
 
 ## System Behavior
 The `ASCII_terminal_art` class takes an image file and several configuration parameters as input. It resizes the image based on the desired output width, maintaining its aspect ratio. Each pixel in the resized image is then analyzed for its RGB values. Based on the pixel's brightness and color dominance, an appropriate ANSI foreground color and a specified ASCII character (or a blank space for very dark pixels) are selected. The converted colored ASCII characters are then assembled row by row. Crucially, the system also integrates a user-defined information list, displaying it dynamically to the right of the ASCII art, creating a rich, informative visual in the terminal.
-
-### Main Flow
-1. **Initialization**: An `ASCII_terminal_art` object is created with parameters like `ascii_char`, `output_width`, `image_file`, `margin_right_for_list`, `list_start_line`, and `info_list`.
-
-2. **Image Loading and Resizing**: The `convert_image_to_colored_ascii` method loads the specified image using OpenCV. It calculates the `output_height` to maintain the aspect ratio and resizes the image accordingly.
-
-3. **Pixel Processing and Color Mapping**: The resized image is iterated pixel by pixel. For each pixel, its BGR values are used by `_get_ansi_color_and_char` to determine the appropriate ANSI color code and the character to display (either the defined `ASCII_CHAR` or a space for dark pixels).
-
-4. **ASCII Art and Information List Assembly**: Each row of ASCII characters is constructed. A margin is added to the right, followed by information from `INFO_LIST` if the current line falls within the defined `list_start_line` and `list_end_line_dynamic` range.
-
-5. **Terminal Output**: The complete ASCII art with the embedded information list is printed to the terminal, utilizing ANSI escape codes for colored text.
-
 ---
 
 ## Code Structure 🏗️
@@ -46,7 +34,7 @@ The system is highly configurable through the parameters passed to the `ASCII_te
     * `info_value` (str): The value of the information field.
     * `info_value_color` (str): ANSI color code for the info value.
 
-**Example Configuration (from `if __name__ == "__main__":` block):**
+**Example Configuration:**
 
 ```python
 info_project_list = [
