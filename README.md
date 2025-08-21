@@ -39,6 +39,8 @@ The system is highly configurable through the parameters passed to the `ASCII_te
 **Example Configuration:**
 
 ```python
+import ASCII_terminal_art
+
 info_project_list = [
     ("Project Name", "\033[31m", "DT", "\033[97m"),
     ("Status", "\033[31m", "In Progress", "\033[34m"),
